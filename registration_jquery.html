@@ -1,0 +1,103 @@
+<html>
+<head>
+  <title> Registration </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+  <form id="reg_form" method="POST">
+      <center>
+          <table cellpadding="5" cellspacing="9">
+              <thead><h1>Registration Form</h1></thead>
+              <tr>
+                  <td>
+                      <label>
+                          Name
+                      </label>
+                  </td>
+                  <td>
+                      <input type="text" id="nm" name="name" placeholder="Enter Name" required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="nm_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          E-mail
+                      </label>
+                  </td>
+                  <td>
+                      <input type="text" id="em" name="email" placeholder="Enter Email Id" required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="em_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Contact No.
+                      </label>
+                  </td>
+                  <td>
+                      <input type="text" id="mob" name="contact" placeholder="Enter Contact No." required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="mob_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Gender
+                      </label>
+                  </td>
+                  <td>
+                      <input type="radio" id="g" name="gender" value="Male" checked="1" /> Male
+                      <input type="radio" id="g" name="gender" value="Female" /> Female
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <input id="register" type="button" name="submit" value="Register"/>
+                  </td>
+                  <td align="right">
+                      <input id="cancel" type="button" name="cancel" value="Cancel"/>
+                  </td>
+              </tr>
+          </table>
+
+  </form>
+  <table cellpadding="5" border="1" id="records">
+      <thead>
+          <h1>Registered Users</h1>
+      </thead>
+      <tr>
+          <th>
+              Name
+          </th>
+          <th>
+              Email
+          </th>
+          <th>
+              Contact
+          </th>
+          <th>
+              Gender
+          </th>
+          <th colspan="2">
+              Operations
+          </th>
+      </tr>
+  </table>
+  </center>
+  <script type="text/javascript" src="validations_jquery.js"></script>
+</body>
+</html>

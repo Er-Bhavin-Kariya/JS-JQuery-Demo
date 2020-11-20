@@ -1,0 +1,133 @@
+<html>
+<head>
+  <title> Registration </title>
+  <script type="text/javascript">
+    function validate(){
+        var inputs = document.getElementById("reg_form").elements;
+
+        var person = {name : inputs[0].value, email : inputs[1].value, contact : inputs[2].value, gender: inputs[name='gender'].value}
+
+        var nm_err = document.getElementById("nm_err");
+        var em_err = document.getElementById("em_err");
+        var mob_err = document.getElementById("mob_err");
+
+        var invalid_name = /[0-9\~\!\`\@\#\$\%\^\&\*\(\)\-\+\=\[\]\{\}\'\"\:\;\<\>\?\,\.\/]/;
+        var valid_em = /^([a-zA-Z0-9_\-\.])+\@([A-Za-z])+\.([A-Za-z])+$/;
+        var valid_mob = /\+([0-9]{1})+([0-9]{10})/;
+
+        nm_err.innerHTML = (person.name)?((person.name.match(invalid_name))?"Name should contain alphabets only" : ""):
+          "Name is Required";
+        
+        em_err.innerHTML = (!valid_em.test(person.email)) ? "Invalid Email Id !" : "";
+        
+        mob_err.innerHTML = (!valid_mob.test(person.contact) || person.contact.length > 13) ? "Invalid Contact No. !" : "";
+
+        if(!(nm_err.innerHTML || em_err.innerHTML || mob_err.innerHTML)){
+          var record = document.createElement("tr");
+          var data = "<td>"+ person.name +"</td><td>"+ person.email +"</td><td>"+ person.contact +"</td><td>"+ 
+            person.gender +"</td>";
+
+          record.innerHTML = data;
+          document.getElementById("records").appendChild(record);
+          reset_form();
+        }
+    }
+    function reset_form(){
+      document.getElementById("reg_form").reset();
+    }
+  </script>
+</head>
+<body>
+  <form id="reg_form">
+      <center>
+          <table cellpadding="5" cellspacing="9">
+              <thead><h1>Registration Form</h1></thead>
+              <tr>
+                  <td>
+                      <label>
+                          Name
+                      </label>
+                  </td>
+                  <td>
+                      <input type="text" id="nm" name="name" placeholder="Enter Name" required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="nm_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          E-mail
+                      </label>
+                  </td>
+                  <td>
+                      <input type="text" id="em" name="email" placeholder="Enter Email Id" required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="em_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Contact No.
+                      </label>
+                  </td>
+                  <td>
+                      <input type="text" id="mob" name="contact" placeholder="Enter Contact No." required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="mob_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Gender
+                      </label>
+                  </td>
+                  <td>
+                      <input type="radio" id="m" name="gender" value="Male" checked="1" /> Male
+                      <input type="radio" id="m" name="gender" value="Female" /> Female
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <input type="button" name="submit" value="Register" onclick="validate()"/>
+                  </td>
+                  <td align="right">
+                      <input type="button" name="cancel" value="Cancel" onclick="reset_form()"/>
+                  </td>
+              </tr>
+          </table>
+
+  </form>
+  <table cellpadding="5" border="1" id="records">
+      <thead>
+          <h1>Registered Users</h1>
+      </thead>
+      <tr>
+          <th>
+              Name
+          </th>
+          <th>
+              Email
+          </th>
+          <th>
+              Contact
+          </th>
+          <th>
+              Gender
+          </th>
+      </tr>
+  </table>
+  </center>
+</body>
+</html>
